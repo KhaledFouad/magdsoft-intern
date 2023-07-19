@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:magdsoft/presentation/router/App_Routes.dart';
 import 'package:magdsoft/presentation/screens/shared/LoginSreen.dart';
+import 'package:magdsoft/presentation/screens/shared/verify.dart';
 
 import '../screens/shared/splash_screen.dart';
 
@@ -10,9 +11,11 @@ class AppRouter {
       case '/':
         return MaterialPageRoute(builder: (_) => const Splash_screen());
       case AppRoutes.loginPageRoute:
-        return MaterialPageRoute(builder: (_) =>  LoginScreen());
+        return MaterialPageRoute(builder: (_) => LoginScreen());
+      case AppRoutes.verifyPageRoure:
+        return MaterialPageRoute(builder: (_) => const VerifyScreen());
       default:
-        return null;
+        return MaterialPageRoute(builder: (_) => const Splash_screen());
     }
   }
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:magdsoft/presentation/router/App_Routes.dart';
 import 'package:magdsoft/presentation/styles/colors.dart';
 import 'package:magdsoft/presentation/widget/default_button.dart';
-import 'package:magdsoft/presentation/widget/textFormFeild.dart';
 import 'package:sizer/sizer.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -94,7 +94,7 @@ class LoginScreen extends StatelessWidget {
                                 color: Colors.grey.withOpacity(0.5),
                                 spreadRadius: 2,
                                 blurRadius: 5,
-                                offset: Offset(0, 3),
+                                offset: const Offset(0, 3),
                               ),
                             ],
                             shape: BoxShape.circle,
@@ -134,122 +134,132 @@ class LoginScreen extends StatelessWidget {
             ),
             Align(
               alignment: Alignment.center,
-              child: Card(
-                elevation: 4.0,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(40.0),
-                ),
-                margin: EdgeInsets.all(16.0.sp),
-                child: SizedBox(
-                  height: 42.5.h,
-                  child: Padding(
-                    padding: EdgeInsets.all(2.0.h),
-                    child: Column(
-                      children: [
-                        Form(
-                          key: formkey,
-                          child: Center(
-                            child: Text(
-                              'Welcome',
-                              style: TextStyle(
-                                color: AppColor.secBlack,
-                                fontSize: 20.sp,
-                                fontWeight: FontWeight.w400,
+              child: FractionalTranslation(
+                translation: const Offset(0, -0.08),
+                child: Card(
+                  elevation: 4.0,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(40.0),
+                  ),
+                  margin: EdgeInsets.all(16.0.sp),
+                  child: SizedBox(
+                    height: 42.5.h,
+                    child: Padding(
+                      padding: EdgeInsets.all(2.0.h),
+                      child: Column(
+                        children: [
+                          Form(
+                            key: formkey,
+                            child: Center(
+                              child: Text(
+                                'Welcome',
+                                style: TextStyle(
+                                  color: AppColor.secBlack,
+                                  fontSize: 20.sp,
+                                  fontWeight: FontWeight.w400,
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                        SizedBox(height: 1.h),
-                        Container(
-                          height: 0.5.h,
-                          width: 40.w,
-                          color: AppColor.blue,
-                        ),
-                        SizedBox(height: 2.5.h),
-                        Card(
-                            elevation: 4.0,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10.0),
-                            ),
-                            margin: EdgeInsets.all(5),
-                            child: Padding(
-                                padding: EdgeInsets.all(1.6.h),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    TextFormField(
-                                      textDirection: TextDirection.ltr,
-                                      controller: nameController,
-                                      decoration: InputDecoration(
-                                        hintText: 'Enter your full name',
-                                        hintStyle: TextStyle(fontSize: 12.sp),
-                                        hintTextDirection: TextDirection.ltr,
-                                        filled: true,
-                                        fillColor: Colors.white,
-                                        contentPadding: EdgeInsets.symmetric(
-                                            vertical: 0.5.h, horizontal: 0.5.w),
-                                        border: OutlineInputBorder(
-                                          borderSide: BorderSide.none,
-                                          borderRadius:
-                                              BorderRadius.circular(10.0),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ))),
-                        SizedBox(height: 1.h),
-                        Card(
-                            elevation: 4.0,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10.0),
-                            ),
-                            margin: EdgeInsets.all(5),
-                            child: Padding(
-                                padding: EdgeInsets.all(1.6.h),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    TextFormField(
-                                      textDirection: TextDirection.ltr,
-                                      controller: phoneNumberController,
-                                      decoration: InputDecoration(
-                                        hintText: 'Enter your Phone number',
-                                        hintStyle: TextStyle(fontSize: 12.sp),
-                                        hintTextDirection: TextDirection.ltr,
-                                        filled: true,
-                                        fillColor: Colors.white,
-                                        contentPadding: EdgeInsets.symmetric(
-                                            vertical: 0.5.h, horizontal: 0.5.w),
-                                        border: OutlineInputBorder(
-                                          borderSide: BorderSide.none,
-                                          borderRadius:
-                                              BorderRadius.circular(10.0),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ))),
-                        SizedBox(height: 2.5.h),
-                        Container(
-                            decoration: BoxDecoration(
-                              gradient: const LinearGradient(
-                                begin: Alignment.centerLeft,
-                                end: Alignment.centerRight,
-                                colors: [
-                                  Color(0xFF0062BD),
-                                  Color(0x460062BD),
-                                ],
-                                stops: [0.5, 1],
+                          SizedBox(height: 1.h),
+                          Container(
+                            height: 0.5.h,
+                            width: 40.w,
+                            color: AppColor.blue,
+                          ),
+                          SizedBox(height: 2.5.h),
+                          Card(
+                              elevation: 4.0,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10.0),
                               ),
-                              borderRadius: BorderRadius.circular(25),
-                            ),
-                            child: DefaultMaterialButton(
-                              onPressed: () {},
-                              text: "Login",
-                              fontSize: 20.sp,
-                              fontWeight: FontWeight.w400,
-                            )),
-                      ],
+                              margin: EdgeInsets.all(0.5.h),
+                              child: Padding(
+                                  padding: EdgeInsets.all(1.6.h),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      TextFormField(
+                                        textDirection: TextDirection.ltr,
+                                        controller: nameController,
+                                        decoration: InputDecoration(
+                                          hintText: 'Enter your full name',
+                                          hintStyle: TextStyle(fontSize: 12.sp),
+                                          hintTextDirection: TextDirection.ltr,
+                                          filled: true,
+                                          fillColor: Colors.white,
+                                          contentPadding: EdgeInsets.symmetric(
+                                              vertical: 0.5.h,
+                                              horizontal: 0.5.w),
+                                          border: OutlineInputBorder(
+                                            borderSide: BorderSide.none,
+                                            borderRadius:
+                                                BorderRadius.circular(10.0),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ))),
+                          SizedBox(height: 1.h),
+                          Card(
+                              elevation: 4.0,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10.0),
+                              ),
+                              margin: EdgeInsets.all(0.5.h),
+                              child: Padding(
+                                  padding: EdgeInsets.all(1.6.h),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      TextFormField(
+                                        textDirection: TextDirection.ltr,
+                                        controller: phoneNumberController,
+                                        decoration: InputDecoration(
+                                          hintText: 'Enter your Phone number',
+                                          hintStyle: TextStyle(fontSize: 12.sp),
+                                          hintTextDirection: TextDirection.ltr,
+                                          filled: true,
+                                          fillColor: Colors.white,
+                                          contentPadding: EdgeInsets.symmetric(
+                                              vertical: 0.5.h,
+                                              horizontal: 0.5.w),
+                                          border: OutlineInputBorder(
+                                            borderSide: BorderSide.none,
+                                            borderRadius:
+                                                BorderRadius.circular(10.0),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ))),
+                          SizedBox(height: 2.5.h),
+                          Container(
+                              decoration: BoxDecoration(
+                                gradient: const LinearGradient(
+                                  begin: Alignment.centerLeft,
+                                  end: Alignment.centerRight,
+                                  colors: [
+                                    Color(0xFF0062BD),
+                                    Color(0x460062BD),
+                                  ],
+                                  stops: [0.5, 1],
+                                ),
+                                borderRadius: BorderRadius.circular(25),
+                              ),
+                              child: DefaultMaterialButton(
+                                onPressed: () {
+                                  Navigator.of(context)
+                                      .pushNamed(AppRoutes.verifyPageRoure);
+                                },
+                                text: "Login",
+                                fontSize: 20.sp,
+                                fontWeight: FontWeight.w400,
+                              )),
+                        ],
+                      ),
                     ),
                   ),
                 ),

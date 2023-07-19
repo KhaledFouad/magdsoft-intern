@@ -28,7 +28,7 @@ class DefaultMaterialButton extends StatelessWidget {
       this.radius = 8,
       this.splashColor,
       this.padding,
-      this.height = 50,
+      this.height = 60,
       this.fontSize,
       this.textScaleFactor,
       this.fontWeight,
