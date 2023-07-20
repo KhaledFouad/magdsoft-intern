@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:magdsoft/presentation/widget/default_text.dart';
+import 'package:sizer/sizer.dart';
 
 class DefaultMaterialButton extends StatelessWidget {
   final bool isUpperCase;
@@ -28,7 +29,7 @@ class DefaultMaterialButton extends StatelessWidget {
       this.radius = 8,
       this.splashColor,
       this.padding,
-      this.height = 60,
+      this.height = 50,
       this.fontSize,
       this.textScaleFactor,
       this.fontWeight,

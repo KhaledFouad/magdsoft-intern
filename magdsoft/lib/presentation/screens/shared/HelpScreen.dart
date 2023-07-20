@@ -1,20 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:magdsoft/business_logic/helpcubit/help_cubit_cubit.dart';
+import 'package:magdsoft/data/models/HelpModel.dart';
 import 'package:magdsoft/presentation/router/App_Routes.dart';
 import 'package:magdsoft/presentation/styles/colors.dart';
 import 'package:magdsoft/presentation/widget/default_button.dart';
 import 'package:sizer/sizer.dart';
 
-class HelpScreen extends StatefulWidget {
+class HelpScreen extends StatelessWidget {
   const HelpScreen({super.key});
 
   @override
-  State<HelpScreen> createState() => _HelpScreenState();
-}
-
-class _HelpScreenState extends State<HelpScreen> {
-  @override
   Widget build(BuildContext context) {
+    Help();
     return SafeArea(
       child: Scaffold(
         body: Container(
@@ -58,8 +57,8 @@ class _HelpScreenState extends State<HelpScreen> {
                     iconColor: AppColor.secBlack,
                     controlAffinity: ListTileControlAffinity.leading,
                     title: Text(
+                      "Account",
                       textAlign: TextAlign.left,
-                      'Account',
                       style: TextStyle(
                           color: AppColor.secBlue,
                           fontSize: 12.sp,
@@ -226,7 +225,7 @@ class _HelpScreenState extends State<HelpScreen> {
                       child: DefaultMaterialButton(
                         onPressed: () {
                           Navigator.of(context)
-                              .pushNamed(AppRoutes.helpPageRoute);
+                              .pushNamed(AppRoutes.homePageRoute);
                         },
                         text: "Continue",
                         fontSize: 20.sp,

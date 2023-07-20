@@ -1,13 +1,6 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:magdsoft/presentation/router/App_Routes.dart';
-import 'package:magdsoft/presentation/router/app_router.dart';
-import 'package:magdsoft/presentation/screens/shared/LoginSreen.dart';
-import 'package:sizer/sizer.dart';
 
 class Splash_screen extends StatefulWidget {
   const Splash_screen({Key? key}) : super(key: key);

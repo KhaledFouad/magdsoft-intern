@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:magdsoft/business_logic/loginCubit/cubit/login_cubit.dart';
 import 'package:magdsoft/presentation/router/App_Routes.dart';
 import 'package:magdsoft/presentation/styles/colors.dart';
 import 'package:magdsoft/presentation/widget/default_button.dart';
@@ -106,6 +109,8 @@ class _VerifyScreenState extends State<VerifyScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final loginCubit = BlocProvider.of<LoginCubit>(context);
+
     return SafeArea(
       child: Scaffold(
           body: Container(
@@ -169,7 +174,18 @@ class _VerifyScreenState extends State<VerifyScreen> {
                 ),
                 child: DefaultMaterialButton(
                   onPressed: () {
-                    Navigator.of(context).pushNamed(AppRoutes.helpPageRoute);
+                    if (amount == loginCubit.loginModel.code) {
+                      Navigator.of(context).pushNamed(AppRoutes.helpPageRoute);
+                    } else {
+                      Fluttertoast.showToast(
+                          msg: "Wrong Code",
+                          toastLength: Toast.LENGTH_SHORT,
+                          gravity: ToastGravity.BOTTOM,
+                          timeInSecForIosWeb: 1,
+                          backgroundColor: AppColor.blue,
+                          textColor: Colors.white,
+                          fontSize: 16.0);
+                    }
                   },
                   text: "Verify",
                   fontSize: 20.sp,

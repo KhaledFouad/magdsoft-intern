@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_translate/flutter_translate.dart';
 import 'package:magdsoft/business_logic/bloc_observer.dart';
+import 'package:magdsoft/business_logic/loginCubit/cubit/login_cubit.dart';
 import 'package:magdsoft/data/data_providers/local/cache_helper.dart';
 import 'package:magdsoft/data/data_providers/remote/dio_helper.dart';
 import 'package:magdsoft/presentation/router/app_router.dart';
@@ -13,13 +14,12 @@ import 'package:intl/intl.dart';
 import 'business_logic/global_cubit/global_cubit.dart';
 import 'presentation/widget/toast.dart';
 
-
 late LocalizationDelegate delegate;
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   BlocOverrides.runZoned(
-        () async {
+    () async {
       DioHelper.init();
       await CacheHelper.init();
       final locale =
@@ -72,6 +72,9 @@ class _MyAppState extends State<MyApp> {
       providers: [
         BlocProvider(
           create: ((context) => GlobalCubit()),
+        ),
+        BlocProvider(
+          create: ((context) => LoginCubit()),
         ),
       ],
       child: BlocConsumer<GlobalCubit, GlobalState>(

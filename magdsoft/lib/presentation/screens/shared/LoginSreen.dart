@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:magdsoft/business_logic/loginCubit/cubit/login_cubit.dart';
 import 'package:magdsoft/presentation/router/App_Routes.dart';
 import 'package:magdsoft/presentation/styles/colors.dart';
 import 'package:magdsoft/presentation/widget/default_button.dart';
@@ -7,12 +9,15 @@ import 'package:sizer/sizer.dart';
 class LoginScreen extends StatelessWidget {
   LoginScreen({super.key});
 
-  TextEditingController nameController = TextEditingController();
-  TextEditingController phoneNumberController = TextEditingController();
+  TextEditingController nameController =
+      TextEditingController(text: "Ali Khaled");
+  TextEditingController phoneNumberController =
+      TextEditingController(text: "01111111111");
   final GlobalKey<FormState> formkey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
+    final loginCubit = BlocProvider.of<LoginCubit>(context);
     return SafeArea(
       child: Scaffold(
           backgroundColor: Colors.transparent,
@@ -236,28 +241,41 @@ class LoginScreen extends StatelessWidget {
                                     ],
                                   ))),
                           SizedBox(height: 2.5.h),
-                          Container(
-                              decoration: BoxDecoration(
-                                gradient: const LinearGradient(
-                                  begin: Alignment.centerLeft,
-                                  end: Alignment.centerRight,
-                                  colors: [
-                                    Color(0xFF0062BD),
-                                    Color(0x460062BD),
-                                  ],
-                                  stops: [0.5, 1],
-                                ),
-                                borderRadius: BorderRadius.circular(25),
-                              ),
-                              child: DefaultMaterialButton(
-                                onPressed: () {
-                                  Navigator.of(context)
-                                      .pushNamed(AppRoutes.verifyPageRoure);
-                                },
-                                text: "Login",
-                                fontSize: 20.sp,
-                                fontWeight: FontWeight.w400,
-                              )),
+                          BlocConsumer<LoginCubit, LoginState>(
+                            listener: (context, state) {
+                              // TODO: implement listener
+                            },
+                            builder: (context, state) {
+                              return Container(
+                                  decoration: BoxDecoration(
+                                    gradient: const LinearGradient(
+                                      begin: Alignment.centerLeft,
+                                      end: Alignment.centerRight,
+                                      colors: [
+                                        Color(0xFF0062BD),
+                                        Color(0x460062BD),
+                                      ],
+                                      stops: [0.5, 1],
+                                    ),
+                                    borderRadius: BorderRadius.circular(25),
+                                  ),
+                                  child: DefaultMaterialButton(
+                                    onPressed: () {
+                                      loginCubit.login(nameController.text,
+                                          phoneNumberController.text);
+                                      if (state is loginSuccess) {
+                                        Navigator.of(context).pushNamed(
+                                            AppRoutes.verifyPageRoure);
+                                      } else if (state is loginFailed){
+
+                                      }
+                                    },
+                                    text: "Login",
+                                    fontSize: 20.sp,
+                                    fontWeight: FontWeight.w400,
+                                  ));
+                            },
+                          ),
                         ],
                       ),
                     ),
