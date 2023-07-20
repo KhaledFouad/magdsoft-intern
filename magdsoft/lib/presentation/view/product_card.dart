@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:magdsoft/presentation/router/App_Routes.dart';
 import 'package:magdsoft/presentation/styles/colors.dart';
 import 'package:sizer/sizer.dart';
 
@@ -95,7 +94,7 @@ class ProductCard extends StatelessWidget {
           right: 0,
           child: InkWell(
             onTap: () {
-              Navigator.of(context).pushNamed(AppRoutes.homePageRoute);
+              // Navigator.of(context).pushNamed(AppRoutes.homePageRoute);
             },
             child: Container(
                 width: 10.w,

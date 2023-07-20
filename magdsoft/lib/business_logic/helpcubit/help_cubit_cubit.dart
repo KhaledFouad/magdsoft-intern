@@ -11,10 +11,20 @@ class HelpCubitCubit extends Cubit<HelpCubitState> {
   HelpCubitCubit() : super(HelpCubitInitial());
   static HelpCubitCubit get(context) => BlocProvider.of(context);
   HelpCubitCubit loginModel = HelpCubitCubit();
+  List<HelpModel> _help = [];
 
-  help() {
-    DioHelper.getData(endPoint: EndPoints.help).then((value) {
-      HelpModel.fromJson(value.data);
+  Future<List<HelpModel>> getHelp() async {
+    var response = await DioHelper.getData(endPoint: EndPoints.help);
+    var helpData = response.data["help"];
+    return helpData.map((help) => HelpModel.fromJson(help)).toList();
+  }
+
+  List<HelpModel> help() {
+    getHelp().then((value) {
+      emit(HelpLoaded(value));
+      _help = value;
     });
+
+    return _help;
   }
 }

@@ -15,11 +15,11 @@ class AppRouter {
       case AppRoutes.loginPageRoute:
         return MaterialPageRoute(builder: (_) => LoginScreen());
       case AppRoutes.verifyPageRoure:
-        return MaterialPageRoute(builder: (_) => const VerifyScreen());
-      case AppRoutes.helpPageRoute:
-        return MaterialPageRoute(builder: (_) => const HelpScreen());
-      case AppRoutes.homePageRoute:
-        return MaterialPageRoute(builder: (_) => const HomeScreen());
+        return MaterialPageRoute(builder: (_) =>  const VerifyScreen());        
+         case AppRoutes.helpPageRoute:
+        return MaterialPageRoute(builder: (_) =>  const HelpScreen());  
+          case AppRoutes.homePageRoute:
+        return MaterialPageRoute(builder: (_) =>  const HomeScreen());         
       default:
         return MaterialPageRoute(builder: (_) => const Splash_screen());
     }

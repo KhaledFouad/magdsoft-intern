@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_translate/flutter_translate.dart';
 import 'package:magdsoft/business_logic/bloc_observer.dart';
+import 'package:magdsoft/business_logic/helpcubit/help_cubit_cubit.dart';
 import 'package:magdsoft/business_logic/loginCubit/cubit/login_cubit.dart';
 import 'package:magdsoft/data/data_providers/local/cache_helper.dart';
 import 'package:magdsoft/data/data_providers/remote/dio_helper.dart';
@@ -75,6 +76,9 @@ class _MyAppState extends State<MyApp> {
         ),
         BlocProvider(
           create: ((context) => LoginCubit()),
+        ),
+        BlocProvider(
+          create: ((context) => HelpCubitCubit()),
         ),
       ],
       child: BlocConsumer<GlobalCubit, GlobalState>(

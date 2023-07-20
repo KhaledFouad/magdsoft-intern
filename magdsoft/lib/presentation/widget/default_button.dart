@@ -38,27 +38,41 @@ class DefaultMaterialButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: height,
-      width: width,
-      child: MaterialButton(
-        padding: padding,
-        elevation: elevation,
-        splashColor: splashColor,
-        color: background,
-        shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(
-          Radius.circular(radius),
-        )),
-        onPressed: onPressed,
-        child: DefaultText(
-          text: isUpperCase ? text.toUpperCase() : text,
-          overflow: TextOverflow.ellipsis,
-          maxLines: 1,
-          textScaleFactor: textScaleFactor,
-          color: textColor,
-          fontSize: fontSize,
-          fontWeight: fontWeight,
+    return Container(
+      decoration: BoxDecoration(
+        gradient: const LinearGradient(
+          begin: Alignment.centerLeft,
+          end: Alignment.centerRight,
+          colors: [
+            Color(0xFF0062BD),
+            Color(0x460062BD),
+          ],
+          stops: [0.5, 1],
+        ),
+        borderRadius: BorderRadius.circular(25),
+      ),
+      child: SizedBox(
+        height: height,
+        width: width,
+        child: MaterialButton(
+          padding: padding,
+          elevation: elevation,
+          splashColor: splashColor,
+          color: background,
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(
+            Radius.circular(radius),
+          )),
+          onPressed: onPressed,
+          child: DefaultText(
+            text: isUpperCase ? text.toUpperCase() : text,
+            overflow: TextOverflow.ellipsis,
+            maxLines: 1,
+            textScaleFactor: textScaleFactor,
+            color: textColor,
+            fontSize: fontSize,
+            fontWeight: fontWeight,
+          ),
         ),
       ),
     );
