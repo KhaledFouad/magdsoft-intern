@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:magdsoft/presentation/router/App_Routes.dart';
+import 'package:magdsoft/presentation/screens/shared/HelpScreen.dart';
 import 'package:magdsoft/presentation/screens/shared/LoginSreen.dart';
-import 'package:magdsoft/presentation/screens/shared/verify.dart';
+import 'package:magdsoft/presentation/screens/shared/verifyPage.dart';
 
 import '../screens/shared/splash_screen.dart';
 
@@ -13,7 +14,9 @@ class AppRouter {
       case AppRoutes.loginPageRoute:
         return MaterialPageRoute(builder: (_) => LoginScreen());
       case AppRoutes.verifyPageRoure:
-        return MaterialPageRoute(builder: (_) => const VerifyScreen());
+        return MaterialPageRoute(builder: (_) =>  const VerifyScreen());        
+         case AppRoutes.helpPageRoute:
+        return MaterialPageRoute(builder: (_) =>  const HelpScreen());        
       default:
         return MaterialPageRoute(builder: (_) => const Splash_screen());
     }

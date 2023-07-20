@@ -25,7 +25,7 @@ class _Splash_screenState extends State<Splash_screen> {
   @override
   Widget build(BuildContext context) {
     Timer(const Duration(seconds: 2),
-        () => Navigator.of(context).pushNamed(AppRoutes.verifyPageRoure));
+        () => Navigator.of(context).pushNamed(AppRoutes.helpPageRoute));
     return Scaffold(
       // appBar: AppBar(),
       body: Image.asset(
