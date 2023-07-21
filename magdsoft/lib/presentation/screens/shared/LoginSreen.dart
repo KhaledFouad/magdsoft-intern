@@ -4,15 +4,18 @@ import 'package:magdsoft/business_logic/loginCubit/cubit/login_cubit.dart';
 import 'package:magdsoft/presentation/router/App_Routes.dart';
 import 'package:magdsoft/presentation/styles/colors.dart';
 import 'package:magdsoft/presentation/widget/default_button.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sizer/sizer.dart';
 
 class LoginScreen extends StatelessWidget {
   LoginScreen({super.key});
 
-  TextEditingController nameController =
-      TextEditingController(text: "Ali Khaled");
-  TextEditingController phoneNumberController =
-      TextEditingController(text: "01111111111");
+  TextEditingController nameController = TextEditingController(
+      // text: "Ali Khaled"
+      );
+  TextEditingController phoneNumberController = TextEditingController(
+      // text: "01111111111"
+      );
   final GlobalKey<FormState> formkey = GlobalKey<FormState>();
 
   @override
@@ -260,15 +263,18 @@ class LoginScreen extends StatelessWidget {
                                     borderRadius: BorderRadius.circular(25),
                                   ),
                                   child: DefaultMaterialButton(
-                                    onPressed: () {
+                                    onPressed: () async {
                                       loginCubit.login(nameController.text,
                                           phoneNumberController.text);
                                       if (state is loginSuccess) {
+                                        SharedPreferences prefs =
+                                            await SharedPreferences
+                                                .getInstance();
+                                        prefs.setString("phoneNumber",
+                                            phoneNumberController.text);
                                         Navigator.of(context).pushNamed(
                                             AppRoutes.verifyPageRoure);
-                                      } else if (state is loginFailed){
-
-                                      }
+                                      } else if (state is loginFailed) {}
                                     },
                                     text: "Login",
                                     fontSize: 20.sp,

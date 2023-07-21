@@ -16,32 +16,40 @@ class HelpCard extends StatefulWidget {
 class _HelpCardState extends State<HelpCard> {
   @override
   Widget build(BuildContext context) {
-    return Card(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-      elevation: 10,
-      child: ExpansionTile(
-        iconColor: AppColor.secBlack,
-        controlAffinity: ListTileControlAffinity.leading,
-        title: Text(
-          widget.title!,
-          textAlign: TextAlign.left,
-          style: TextStyle(
-              color: AppColor.secBlue,
-              fontSize: 12.sp,
-              fontWeight: FontWeight.w400),
+    return Column(
+      children: [
+        Card(
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+          elevation: 10,
+          child: ExpansionTile(
+            iconColor: AppColor.secBlack,
+            controlAffinity: ListTileControlAffinity.leading,
+            title: Text(
+              widget.title!,
+              textAlign: TextAlign.left,
+              style: TextStyle(
+                  color: AppColor.secBlue,
+                  fontSize: 12.sp,
+                  fontWeight: FontWeight.w400),
+            ),
+            children: <Widget>[
+              ListTile(
+                  title: Text(
+                textDirection: TextDirection.ltr,
+                widget.subTitle!,
+                style: TextStyle(
+                    color: AppColor.secBlack,
+                    fontSize: 12.sp,
+                    fontWeight: FontWeight.w400),
+              )),
+            ],
+          ),
         ),
-        children: <Widget>[
-          ListTile(
-              title: Text(
-            textDirection: TextDirection.ltr,
-            widget.subTitle!,
-            style: TextStyle(
-                color: AppColor.secBlack,
-                fontSize: 12.sp,
-                fontWeight: FontWeight.w400),
-          )),
-        ],
-      ),
+        SizedBox(
+          height: 2.h,
+        ),
+      ],
     );
   }
 }

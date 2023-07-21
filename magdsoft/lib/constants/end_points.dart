@@ -3,5 +3,6 @@ class EndPoints {
   static const String login = "verifyPhone";
   static const String otp = "otp";
   static const String help = "getHelp";
+  static const String getProducts = "getProducts";
   static const String userToken = "";
 }
