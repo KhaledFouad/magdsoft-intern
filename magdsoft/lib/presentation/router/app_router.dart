@@ -23,9 +23,16 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => HelpScreen());
       case AppRoutes.homePageRoute:
         return MaterialPageRoute(builder: (_) => const HomeScreen());
-     
-      case AppRoutes.productPageRoute:
-        return MaterialPageRoute(builder: (_) =>  const ProductScreen(product: product,));
+
+      // case AppRoutes.productPageRoute:
+      //   return MaterialPageRoute(
+      //       builder: (_) => ProductScreen(
+      //             description: '',
+      //             image: '',
+      //             name: '',
+      //             price: '',
+      //             type: '', company: '',
+      //           ));
       case AppRoutes.navigationPageRoute:
         return MaterialPageRoute(
             builder: (_) => NavigationBar(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:magdsoft/presentation/router/App_Routes.dart';
+import 'package:magdsoft/presentation/screens/shared/ProductScreen.dart';
 import 'package:magdsoft/presentation/styles/colors.dart';
 import 'package:sizer/sizer.dart';
 
@@ -8,18 +9,34 @@ class ProductCard extends StatelessWidget {
   final String name;
   final String price;
   final String image;
+  final String type;
+
+  final String description;
+
   const ProductCard(
       {super.key,
       required this.company,
       required this.name,
       required this.price,
-      required this.image});
+      required this.image,
+      required this.type,
+      required this.description});
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigator.of(context).pushNamed(AppRoutes.productPageRoute);
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => ProductScreen(
+                      company: company,
+                      description: description,
+                      image: image,
+                      name: name,
+                      price: price,
+                      type: type,
+                    )));
       },
       child: Column(
         children: [

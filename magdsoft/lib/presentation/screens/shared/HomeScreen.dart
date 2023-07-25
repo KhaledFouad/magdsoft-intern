@@ -13,9 +13,12 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
- List<dynamic> getProductList(Map<String, dynamic> responseData, String company) {
+  List<dynamic> getProductList(
+      Map<String, dynamic> responseData, String company) {
     List<dynamic> productList = responseData['products'];
-    return productList.where((product) => product['company'] == company).toList();
+    return productList
+        .where((product) => product['company'] == company)
+        .toList();
   }
 
   @override
@@ -268,48 +271,62 @@ class _HomeScreenState extends State<HomeScreen> {
                     Expanded(
                       child: FutureBuilder<Map<String, dynamic>>(
                         future: ProductsCubit().fetchDataFromAPI(),
-            builder: (context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.waiting) {
-                return const Center(
-                  child: CircularProgressIndicator(),
-                );
-              } else if (snapshot.hasError) {
-                return Center(
-                  child: Text('Error: ${snapshot.error}'),
-                );
-              } else {
-                Map<String, dynamic> responseData = snapshot.data!;
-                List<dynamic> productList = responseData['products'];
+                        builder: (context, snapshot) {
+                          if (snapshot.connectionState ==
+                              ConnectionState.waiting) {
+                            return const Center(
+                              child: CircularProgressIndicator(),
+                            );
+                          } else if (snapshot.hasError) {
+                            return Center(
+                              child: Text('Error: ${snapshot.error}'),
+                            );
+                          } else {
+                            Map<String, dynamic> responseData = snapshot.data!;
+                            List<dynamic> productList =
+                                responseData['products'];
 
-                return ListView.builder(
-                  itemCount: productList.length,
-                  itemBuilder: (context, index) {
-                    String company = productList[index]['company'];
-                    String name = productList[index]['name'];
-                    String image = productList[index]['image'];
-                    String price = productList[index]['price'];
-                    return InkWell(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => ProductScreen(product: productList[index]),
-                          ),
-                        );
-                      },
-                      child: ProductCard(
-                        company: company,
-                        image: image,
-                        price: price,
-                        name: name,
+                            return ListView.builder(
+                              itemCount: productList.length,
+                              itemBuilder: (context, index) {
+                                String company = productList[index]['company'];
+                                String name = productList[index]['name'];
+                                String image = productList[index]['image'];
+                                String price = productList[index]['price'];
+                                String type = productList[index]['type'];
+                                String description =
+                                    productList[index]['description'];
+
+                                return InkWell(
+                                  onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => ProductScreen(
+                                          description: description,
+                                          image: image, name: name,
+                                          price: price, type: type,
+                                          company: company,
+                                          // product: productList[index]
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                  child: ProductCard(
+                                    company: company,
+                                    image: image,
+                                    price: price,
+                                    name: name,
+                                    description: description,
+                                    type: type,
+                                  ),
+                                );
+                              },
+                            );
+                          }
+                        },
                       ),
-                    );
-                  },
-                );
-              }
-            },
-          ),
-        ),
+                    ),
                     Expanded(
                       child: FutureBuilder<Map<String, dynamic>>(
                         future: ProductsCubit().fetchDataFromAPI(),
@@ -335,12 +352,16 @@ class _HomeScreenState extends State<HomeScreen> {
                                 String name = productList[index]['name'];
                                 String image = productList[index]['image'];
                                 String price = productList[index]['price'];
+                                String type = productList[index]['type'];
+                                String description =
+                                    productList[index]['description'];
                                 return ProductCard(
-                                  company: company,
-                                  image: image,
-                                  price: price,
-                                  name: name,
-                                );
+                                    company: company,
+                                    image: image,
+                                    price: price,
+                                    name: name,
+                                    description: description,
+                                    type: type);
                               },
                             );
                           }

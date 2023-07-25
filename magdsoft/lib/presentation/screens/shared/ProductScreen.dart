@@ -5,8 +5,23 @@ import 'package:sizer/sizer.dart';
 import '../../widget/default_button.dart';
 
 class ProductScreen extends StatelessWidget {
-  final dynamic product;
-  const ProductScreen({super.key, required this.product});
+  // final dynamic product;
+  String? name;
+    String? company;
+  String? type;
+  String? image;
+  String? price;
+  String? description;
+  ProductScreen({
+    super.key,
+    //  required this.product,
+    required this.name,
+    required this.description,
+    required this.price,
+    required this.image,
+    required this.type,
+    required this.company
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -66,7 +81,7 @@ class ProductScreen extends StatelessWidget {
                     ),
                     Text(
                       // product['name'] ??
-                      'Predator Helios 300',
+                      name!,
                       textAlign: TextAlign.left,
                       style: TextStyle(
                           color: AppColor.white,
@@ -78,7 +93,7 @@ class ProductScreen extends StatelessWidget {
                     ),
                     Text(
                       // 'type: ${product['type'] ??
-                      "type: Gaming Laptop",
+                      "type:$type",
                       textAlign: TextAlign.left,
                       style: TextStyle(
                           color: AppColor.white,
@@ -107,7 +122,7 @@ class ProductScreen extends StatelessWidget {
                             borderRadius: BorderRadius.circular(10),
                           ),
                           child: Image.network(
-                            "https://m.media-amazon.com/images/I/7183SjkrSnL._AC_SL1500_.jpg",
+                            image!,
                           )),
                     ),
                     Container(
@@ -224,7 +239,7 @@ class ProductScreen extends StatelessWidget {
                             children: [
                               SizedBox(height: 1.5.h),
                               Text(
-                                "Official Store",
+                                "${company!} Official Store",
                                 textAlign: TextAlign.left,
                                 style: TextStyle(
                                     color: AppColor.secBlack,
